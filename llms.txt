@@ -1,0 +1,24 @@
+# The Ontology Lineage / 온톨로지 계보
+
+> 2,300 years of ontology research on one static page: a lineage timeline from Aristotle to ontology-constrained LLMs, theoretical foundations, a GraphRAG/knowledge-engine synthesis, an integrated reference architecture, a five-stage learning route, and a browser for all 425 papers. 온톨로지 연구 425편의 계보·이론·아키텍처·5단계 학습 루트를 한 페이지로 정리한 정적 사이트.
+
+All 425 papers were collected, gap-analyzed, and rated with research-agent; the survey logged 9 research gaps, 8 of which were closed by a follow-up collection (the closure ledger is on the page).
+
+## Pages
+
+- [English version](https://epicsagas.github.io/ontology-explorer/en/): the full site in English
+- [한국어 버전](https://epicsagas.github.io/ontology-explorer/): 전체 사이트 한국어판
+- [Full text for LLMs, English](https://epicsagas.github.io/ontology-explorer/en/llms-full.txt): plain-text export of the English page
+- [LLM용 전문, 한국어](https://epicsagas.github.io/ontology-explorer/llms-full.txt): 한국어 페이지의 일반 텍스트 내보내기
+
+## Data
+
+- [data/papers.json](https://epicsagas.github.io/ontology-explorer/data/papers.json): all 425 papers as structured JSON (title, authors, year, venue, DOI, rating, era/theme groupings) — exported from the research-agent SQLite library
+
+## Content map
+
+- Lineage timeline: antiquity → scholastics → formal ontology → description logics → semantic web → LLM era
+- Theoretical foundations: categories, mereology, universals, BFO/DOLCE/ SUMO-style upper ontologies
+- LLM/GraphRAG synthesis: ontology-constrained generation, knowledge-graph RAG, entity typing, hallucination reduction
+- Integrated architecture: how an ontology layer sits above vector + graph stores in production systems
+- Five-stage learning route: an ordered reading path from first survey to research frontier

@@ -1,0 +1,355 @@
+The Ontology Lineage — From Classifying Being to Knowledge Engines 
+
+ The Ontology
+Lineage 
+ A learning map built on 425 papers 
+ 0 Overview 
+ I Theoretical Foundations 
+ II LLMs × Ontologies 
+ III GraphRAG 
+ IV Knowledge Engines 
+ V Integrated Architecture 
+ VI Roadmap 
+ VII Open Problems 
+ L Learning Route 
+ B Bibliography · 425 
+
+## How classifying being
+became a knowledge engine 
+
+From Aristotle's categories to ontology-constrained LLMs in 2026 — 2,300 years of lineage on one page. 425 papers, a five-stage learning route. 
+
+Sources: the research-agent literature DB (surveyed 2026-09) · integrated report "Building Ontology-Based Knowledge Services" · 한국어 
+
+ 350 BC Aristotle's Categories the first classification of individuals, attributes, relations 
+
+ 1948 Quine's ontological commitment the range of your variables is your ontology 
+
+ 1910s– Husserl · Leśniewski the roots of formal ontology 
+
+ 1990s Ontology engineering begins "an explicit specification of a conceptualization" 
+
+ 2002–21 DOLCE · BFO · UFO the three schools of foundational ontology 
+
+ 2010s Biomedical proof at scale GO · OBI · HPO, reasoners mature 
+
+ 2021 OWL2Vec* ontologies become vectors 
+
+ 2017–21 Knowledge injection K-BERT · KEPLER · QA-GNN 
+
+ 2019–22 Neuro-symbolic neural networks + symbolic reasoning 
+
+ 2023 LLMs4OL LLMs build ontologies 
+
+ 2024–25 OG-RAG ontology-grounded retrieval 
+
+ 2026 Conversational Control ontologies constrain LLMs 
+
+ Philosophy Engineering AI 
+
+## Overview 
+
+Ontology (ontos, being + logos, study) asks "what exists, and how is it classified and related?" This site traces the 2,300-year lineage of that question as it moved from philosophy through engineering into AI — and collects the theory, architecture, and learning route needed to build it into a knowledge service. 
+
+ Philosophy sets down the principles of classifying being — categories, essence, ontological commitment. 
+
+ Engineering hardens those classifications into logic (OWL · DL) and proves them at scale in biomedicine. 
+
+ AI reverses the direction — LLMs build ontologies, and ontologies constrain LLMs. 
+
+The one-line engineering conclusion: make every write pass schema validation, and make every read return its evidence path. 
+
+## Theoretical Foundations 
+
+Quine's insight — "what a theory commits itself to can be read off the range of values of its variables" — translates perfectly into engineering language. The set of entity types a system references, stores, and reasons over is that system's ontology. 
+
+## The three schools of foundational ontology 
+
+ | | BFO | DOLCE | UFO 
+
+ | Philosophical stance | realism (mirrors scientific reality) | descriptivism (acknowledges cognitive-linguistic bias) | ontologically well-founded (eclectic) 
+
+ | Core distinction | continuant / occurrent | endurant / perdurant + qualities | endurant / perdurant + sortal 
+
+ | Strength | biomedical standard (basis of GO · OBI · HPO) | linguistic-cognitive coherence, NLP-friendly | coheres with conceptual modeling 
+
+ | Best fit | scientific data integration, reproducibility | text-based knowledge extraction | enterprise domain modeling 
+
+Selection guidance: experiment- and observation-centric → BFO ; language- and document-centric → DOLCE ; domain-model coherence matters most → UFO . The common practice is a hybrid: align only the top 5–10% to a foundational ontology and design the domain layer yourself. 
+
+## Translating philosophical concepts into engineering 
+
+ | Philosophical concept | Engineering counterpart 
+
+ | category | class, type 
+
+ | essence | necessary attributes and constraints (OWL necessary & sufficient) 
+
+ | ontological dependence | referential integrity + dependency axioms 
+
+ | identity criterion | key design, entity-resolution criteria 
+
+ | ontological commitment | schema declaration + the worldview the reasoner enforces 
+
+## The representation stack and its seven functions 
+
+The stack builds from application → generation (LLM) → reasoning (DL reasoners · SHACL) → representation (OWL 2/RDF) → storage (graph + vector). OWL 2 profile trade-offs: EL for large-scale classification, RL for rule execution, QL for querying, and full DL reserved for offline validation. 
+
+Reasoning — hierarchy derivation, consistency checking, instance classification 
+
+Alignment & matching — linking heterogeneous ontologies 
+
+Embedding — reasoner-aware vectorization such as OWL2Vec* 
+
+Validation — OOPS! design-flaw scanning + SHACL data validation 
+
+Evolution — versioning and backward compatibility 
+
+Construction automation — LLM-based extraction of terms, relations, axioms 
+
+Joint retrieval — using the ontology to structure the search space 
+
+## LLMs × Ontologies 
+
+Three turns in the lineage: bake knowledge into the model → let LLMs build ontologies → let ontologies constrain LLMs. 
+
+## 1. Knowledge injection (2017–2021) 
+
+K-BERT injected triples into the sentence tree and used attention masks to block the false positives of knowledge overload. KEPLER bound MLM and knowledge-embedding loss into a single pre-training objective. QA-GNN reasoned over query-relevant subgraphs with a GNN and fused the result with the language model. Limitation — updates required retraining, and that limitation pushed the paradigm toward externalizing the graph: GraphRAG. 
+
+## 2. LLMs build ontologies (2023–2026) 
+
+ LLMs4OL (2023) reformulated the four tasks of ontology learning — term extraction, type classification, taxonomy discovery, relation discovery — as LLM tasks. By 2025, three-stage agent pipelines (generate → refine → populate; product KGs with 97% attribute coverage reported) and human-in-the-loop verification had become standard practice. The working principle: the LLM is a proposer, not an architect . Schema commits must pass foundational-alignment and human review — direct empirical comparisons between LLM-generated and expert-built ontologies are still missing. 
+
+## 3. Ontologies constrain LLMs (2024–2026) 
+
+"Can KGs reduce LLM hallucinations?" (2024 survey) systematically reviewed the hypothesis; OG-RAG (2025) interpreted queries as ontology entities and relations, then delivered only evidence-grounded context; Conversational Control (2026) used ontologies as a lightweight constraint frame and demonstrated explainable output control. BIM code compliance and CVE assessment show "compliance-oriented generation" becoming a pattern. 
+
+## The mutual reinforcement loop 
+
+ LLM: propose 
+ extract entities · relations · axioms 
+
+ Normalize · Validate 
+ foundational alignment · consistency 
+
+ KG commit 
+ human gate · indexing 
+
+ Interpret · Evidence 
+ GraphRAG serving 
+
+ build 
+ reflect 
+ serve 
+ feedback · error reports 
+
+The loop's trustworthiness scales with the strength of the normalization and validation stage. The dashed (vermilion) path is user feedback re-entering as proposals. 
+
+## GraphRAG × Ontologies 
+
+Graph paths repair vector RAG's multi-hop failures, retrieval drift, and missing evidence. The ontology gives retrieval a grammar. 
+
+## Four ontology-grounded patterns 
+
+ | Pattern | Operation | Ontology's role | Examples 
+
+ | Schema-constrained retrieval | interpret the query as entities and relations, then collect paths | grammar of query interpretation | OG-RAG, FAIR GraphRAG 
+
+ | Knowledge enrichment | expand vector results via the KG | map for expansion | KERAG 
+
+ | Agentic exploration | agent gathers evidence using the graph as a tool | exploration rules | GRAIL 
+
+ | Hybrid fusion | fuse graph scores + vectors + text | channel-coherence validator | graph-vector fusion 
+
+GraphRAG without an ontology degenerates into schema-free graph search. Evaluation axes — multi-hop accuracy, faithfulness, citation precision, robustness under attack and noise. 
+
+## Knowledge Engines 
+
+The storage and query layer. Vector-graph hybrids are converging on a standard. 
+
+ Unified engines : AkasicDB (2026) — vector-graph-relational in one. TigerVector (2025) — vector search inside a graph DB. 
+
+ Co-optimization : RAG-Stack (2025) — retrieval quality and storage performance designed as one system. 
+
+ Query : the Cypher family; LLM-based query generation (Auto-Cypher). 
+
+ Security : retrieval pivot attacks — graph paths become the attack surface. Path trust and provenance enforcement required. 
+
+## Deploying reasoners 
+
+Full DL reasoning (HermiT-class) is too expensive for online use. Working deployment: schema validation and classification run as offline batches ; online serves materialization (pre-computed inference graphs) plus lightweight SHACL validation; rules are pushed down into the graph engine. 
+
+## Integrated Architecture 
+
+The six-layer skeleton of an ontology-based knowledge service, and the knowledge lifecycle. 
+
+ Application 
+
+ Search service Agents Dashboards API gateway 
+
+ Generation 
+
+ LLM Query interpretation Answer generation Ontology proposal ▲ ontology constraint — constrained decoding / prompting 
+
+ Retrieval 
+
+ Entity linking → Path expansion → Fusion → Ranking GraphRAG pipeline 
+
+ Knowledge 
+
+ Ontology schema Foundational alignment — BFO / DOLCE / UFO Domain ontology Rules — SHACL / SWRL 
+
+ Engine 
+
+ Graph DB ⟷ Vector index ⟷ Relational Reasoner (batch) Embedding refresh Validation scanner 
+
+ Collection 
+
+ Document parsing → LLM extraction → Normalization → Proposal queue 
+
+● ink: application  ● vermilion: AI · generation  ● jade: knowledge · engineering — same palette as the hero timeline's eras. 
+
+## Technology choices 
+
+ | Role | Choices | Notes 
+
+ | Ontology editing · versioning | Protégé + git-based OWL management | port of biomedical practice 
+
+ | Reasoner | HermiT (batch), EL reasoners (large-scale) | no online reasoning 
+
+ | Validation | OOPS! (design), SHACL (data) | fold into CI 
+
+ | Graph engine | vector-graph hybrid DB | single engine first 
+
+ | Embedding | OWL2Vec* + text embeddings, kept separate | reasoner-aware is a must 
+
+ | LLM | split construction (large) from serving (light) | separate roles 
+
+ | Orchestration | propose → validate → commit queue | human-in-the-loop gate 
+
+## The knowledge lifecycle 
+
+ Collect parse documents and data sources 
+
+ Extract LLM proposes entities, relations, candidate axioms — structured output enforced 
+
+ Normalize foundational alignment, entity resolution 
+
+ Validate DL consistency + SHACL + OOPS scan on failure, back to the queue 
+
+ Commit human gate (high-risk) or automatic (low-risk) into the KG 
+
+ Index graph load + embedding and materialized-inference refresh 
+
+ Serve answer queries via GraphRAG 
+
+ Evolve feedback re-enters as proposal source 
+
+Eight stages form a closed loop — evolution leads back to extraction (the dashed path in the loop diagram above). 
+
+## Service API skeleton 
+
+ POST /ask natural-language query → GraphRAG → answer with evidence attached 
+
+ GET /schema fetch the ontology schema — classes, relations, axioms 
+
+ POST /entities register/upsert entities — schema-validation gate built in 
+
+ POST /validate validate arbitrary triples or shapes 
+
+ GET /explain/<id> the inference-evidence path for a given fact — explainability 
+
+ POST /proposals LLM proposal queue — awaiting human approval 
+
+ GET /provenance per-fact sources and confidence 
+
+## Build Roadmap 
+
+Five stages from taxonomy to an evolution loop. Each stage's exit criterion is the gate. 
+
+ | Stage | Scope | Exit criterion 
+
+ | 1. Taxonomy | 50–200 core classes, foundational alignment | OOPS scan passed, expert review 
+
+ | 2. KG build | LLM extraction + validation gates, instance load | extraction precision measured, SHACL pass rate 
+
+ | 3. Engine coupling | graph+vector hybrid, batch reasoning | multi-hop hit@k target 
+
+ | 4. GraphRAG | entity linking → path expansion → fusion pipeline | faithfulness benchmark passed 
+
+ | 5. Evolution loop | feedback re-injection, schema versioning | zero-downtime ontology evolution 
+
+## Five evaluation axes 
+
+ Ontology quality — pitfall count (OOPS), DL consistency violations, alignment rate, axiom density 
+
+ KG quality — extraction precision/recall, entity-resolution accuracy, freshness 
+
+ Retrieval — hit@k, MRR, multi-hop accuracy 
+
+ Generation — faithfulness, citation precision, hallucination rate 
+
+ Operations — schema backward-compatibility rate, gate pass rate, p95 latency 
+
+## Five risks 
+
+Schema rigidity — keep the foundational layer thin, split constraints out into SHACL 
+
+LLM ontology quality gap — human gate mandatory, ongoing sampled audits 
+
+Reasoning cost explosion — EL/RL online, DL offline 
+
+Graph attack surface — path trust, provenance enforcement 
+
+Hybrid complexity — single engine first, coherence tests for the fusion layer 
+
+## Open Problems 
+
+Nine research gaps were logged in the initial survey (216 papers) — follow-up collection closed eight of them (425 papers today). Below: what was filled, and the one problem that genuinely remains. 
+
+## Closed — evidence per gap 
+
+ | Gap (initial priority) | Outcome | Representative paper 
+
+ | 2024–26 LLM–ontology fusion (0.8) | 30+ papers on ontology-grounded RAG and agent construction — the AI·LLM axis alone now spans 100 papers | OG-RAG (2025) 
+
+ | Primary sources of formal ontology (0.6) | 13 papers in the Husserl · Leśniewski · Whitehead lineage — the philosophy axis now spans 90 | Husserl on ‘Besinnung’ and Formal Ontology (2019) 
+
+ | Missing design patterns and rule layers (0.6) | 12 design-pattern · 7 SHACL · 7 SWRL papers | Ontology Engineering with ODP (2016) 
+
+ | Thin philosophy-to-design bridge (0.8) | mitigated by cross-school comparison and matching studies | Foundational ontologies meet ontology matching (2021) 
+
+ | Enterprise ontology evaluation (0.6) | industrial validation cases added (BIM · ifcOWL, etc.) | ifcOWL validation with SHACL (2024) 
+
+ | Evaluating LLM ontologies · implicit commitment (0.9/0.7) | 11 papers on evaluation frameworks and expert comparisons — partially filled | From human experts to machines (2024) 
+
+Click a paper button to open its details and source links. The full closure ledger is in research report v2. 
+
+## Remaining gap — genuinely open 
+
+ Rigorous empirical comparison of LLM-generated ontologies vs. expert foundational ontologies (0.9) — research on the quality and evaluation of LLM-built ontologies has grown, but direct comparisons of coverage, consistency, and philosophical validity against BFO/UFO/DOLCE alignment remain scarce. Until the trust boundary of construction automation can be quantified, operators must bridge the gap with human gates and their own sampled audits (Risk 2, chapter VII). Kept as a follow-up research topic. 
+
+## Learning Route 
+
+Five stages — from philosophy's question to building architect. Click any representative paper to open its details. 
+
+## Bibliography 
+
+All 425 papers collected in this survey — the three ontology axes plus the GraphRAG and graph-engine topics. Filter and search your way through. 
+
+ All 
+ Philosophy 
+ Engineering 
+ AI & LLM 
+ GraphRAG 
+ Graph Engine 
+
+ All ratings ★3+ ★4+ ★5 
+
+ Sources: 425 papers from the research-agent literature DB · 9 gap analyses — surveyed 2026-09.
+ This site is a product of ontology research collected and organized with research-agent. 한국어 
+
+ × 
+
+##
